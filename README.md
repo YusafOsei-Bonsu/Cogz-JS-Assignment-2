@@ -27,7 +27,7 @@ const ex5 = 'You can contact me on Twitter @codebubb or james@juniordevelopercen
 2. Using a regex pattern, remove all of the numbers from the ex2 string. &#9745;
 3. Using a regex pattern, find the monetary value contained within the ex3 string.
 4. Using a regex pattern, find the telephone number contained within the ex4 string.
-5. Using a regex pattern, find the email address contained within the ex5 string.
+5. Using a regex pattern, find the email address contained within the ex5 string. &#9745;
 
 ### Promise
 1. Write a function testNum that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 10.

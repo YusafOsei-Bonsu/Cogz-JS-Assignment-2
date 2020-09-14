@@ -1,11 +1,11 @@
 import chai from 'chai';
 const { expect } = chai;
-import { find3LetterWords, removeNumbers } from "../scripts/regex.js";
+// JS functions using regex
+import { find3LetterWords, removeNumbers, findEmail } from "../scripts/regex.js";
 
 // Sample test data
 const ex3 = 'The salad costs $9.99';
 const ex4 = 'Contact customer support on 0800 300 500';
-const ex5 = 'You can contact me on Twitter @codebubb or james@juniordevelopercentral.com';
 
 describe('JS Assignment 2', () => {
 
@@ -33,6 +33,16 @@ describe('JS Assignment 2', () => {
             
             it("Should return 'FIREFOX'", () => expect(removeNumbers('F1122222IRE1281FOX')).to.equal('FIREFOX'));
         });
+
+        // Test suite for fifth regex question
+        describe('Regex 5 - Find email in string', () => {
+            it("Should return [ 'james@juniordevelopercentral.com' ]", () => {
+                expect(findEmail('You can contact me on Twitter @codebubb or james@juniordevelopercentral.com')).to.eql(['james@juniordevelopercentral.com']);
+            });
+
+            it("Should return [ 'yusafoseibonsu@hotmail.com', '875394@cognizant.com' ]", () => {
+                expect(findEmail('My peronal email is yusafoseibonsu@hotmail.com and my professional email is 875394@cognizant.com')).to.eql(['yusafoseibonsu@hotmail.com','875394@cognizant.com']);
+            });
+        });
     });
-    
 });

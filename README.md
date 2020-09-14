@@ -11,20 +11,6 @@ This assignment requires the creation and testing of JS functions that utilise r
 
 1. In terminal, I entered `npm i --save-dev mocha chai` to locally install the Mocha and Chai testing package.
 2. In `package.json`, I set the testing framework as Mocha by setting the property to Mocha (i.e. `"scripts": { "test": "mocha" }`)
-3. Initial test code:
-```javascript
-const assert = require('chai').assert;
-const expect = require('chai').expect;
-
-describe('JS Assignment 2', () => {
-    describe('Regex Exercises', () => {
-
-    });
-    describe('Promise Exercises', () => {
-
-    });
-});
-```
 
 ## Exercises
 
@@ -47,3 +33,10 @@ const ex5 = 'You can contact me on Twitter @codebubb or james@juniordevelopercen
 1. Write a function testNum that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 10.
 2. Write two functions that use Promises that you can chain! The first function, makeAllCaps(), will take in an array of words and capitalise them, and then the second function, sortWords(), will sort the words in alphabetical order. If the array contains anything but strings, it should throw an error.
 3. Write examples to use all, allSettled methods in Promise with examples 
+
+
+## Blockers/Resolutions
+| Blockers | Resolutions |
+|----------|-------------|
+| Comparing equality between two arrays in Mocha/Chai | Use the second equality assert [eql](https://medium.com/building-ibotta/testing-arrays-and-objects-with-chai-js-4b372310fe6d) |
+| `SyntaxError: Cannot use import statement outside a module` | Add `"type": "module"` into `package.json`. [Find more information here](https://medium.com/@fredriccliver/syntaxerror-cannot-use-import-statement-outside-a-module-69182014b8c6) |

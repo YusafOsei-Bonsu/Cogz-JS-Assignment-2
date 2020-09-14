@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "The second JS assignment ",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha"
   },

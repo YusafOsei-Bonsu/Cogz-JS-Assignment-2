@@ -11,3 +11,13 @@ export const find3LetterWords = (sentence) => {
     });
     return threeLettersOnly;
 }
+
+// Removes numbers from a string
+export const removeNumbers = (sentence) => {
+    // Regex used to replace numerical digits with a space
+    const noNumbers = /[0-9]/g;
+    sentence = sentence.replace(noNumbers, '');
+    return sentence;
+}
+
+console.log(removeNumbers('A1B2C3D4E5F6G7H8I9J10'));

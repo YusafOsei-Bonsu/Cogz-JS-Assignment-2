@@ -1,5 +1,3 @@
-// const assert = require('chai').assert;
-// const expect = require('chai').expect;
 import chai from 'chai';
 const { expect } = chai;
 import { find3LetterWords } from "../scripts/regex.js";

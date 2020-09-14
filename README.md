@@ -23,7 +23,7 @@ const ex5 = 'You can contact me on Twitter @codebubb or james@juniordevelopercen
 ```
 
 ### REGEX
-1. Using a regex pattern, get the 3 letter words in the ex1 string.
+1. Using a regex pattern, get the 3 letter words in the ex1 string. &#9745;
 2. Using a regex pattern, remove all of the numbers from the ex2 string.
 3. Using a regex pattern, find the monetary value contained within the ex3 string.
 4. Using a regex pattern, find the telephone number contained within the ex4 string.
@@ -38,5 +38,5 @@ const ex5 = 'You can contact me on Twitter @codebubb or james@juniordevelopercen
 ## Blockers/Resolutions
 | Blockers | Resolutions |
 |----------|-------------|
-| Comparing equality between two arrays in Mocha/Chai | Use the second equality assert [eql](https://medium.com/building-ibotta/testing-arrays-and-objects-with-chai-js-4b372310fe6d) |
+| Comparing equality between two arrays in Mocha/Chai | Use the second equality assert, [eql](https://medium.com/building-ibotta/testing-arrays-and-objects-with-chai-js-4b372310fe6d) |
 | `SyntaxError: Cannot use import statement outside a module` | Add `"type": "module"` into `package.json`. [Find more information here](https://medium.com/@fredriccliver/syntaxerror-cannot-use-import-statement-outside-a-module-69182014b8c6) |

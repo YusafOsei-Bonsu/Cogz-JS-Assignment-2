@@ -2,11 +2,14 @@ import chai from 'chai';
 const { expect } = chai;
 // JS functions using regex
 import { find3LetterWords, removeNumbers, findEmail } from "../scripts/regex.js";
+// JS functions using promises
+import { testNum } from '../scripts/promises.js'
 
 // Sample test data
 const ex3 = 'The salad costs $9.99';
 const ex4 = 'Contact customer support on 0800 300 500';
 
+// Tests for JS assignment 2
 describe('JS Assignment 2', () => {
 
     // Test suite for the Regex exercises
@@ -42,6 +45,44 @@ describe('JS Assignment 2', () => {
 
             it("Should return [ 'yusafoseibonsu@hotmail.com', '875394@cognizant.com' ]", () => {
                 expect(findEmail('My peronal email is yusafoseibonsu@hotmail.com and my professional email is 875394@cognizant.com')).to.eql(['yusafoseibonsu@hotmail.com','875394@cognizant.com']);
+            });
+        });
+    });
+
+    // Test suite for the Promise exercises
+    describe('Promise Exercises', () => {
+        describe('Promise 1 - If number is greater/less than 10', () => {
+
+            // Testing the scenario where the provided value is 10
+            it('Should return 10', () => testNum(10).then(result => expect(result).to.equal(10)));
+
+            // Testing the scenario where the provided value is greater than 10
+            it('Should return the number being greater than 10', () => {
+                testNum(20).then(result => expect(result).to.equal('20 is greater than 10'));
+
+                testNum(30).then(result => expect(result).to.equal('30 is greater than 10'));
+
+                testNum(50).then(result => expect(result).to.equal('50 is greater than 10'));
+
+                testNum(100).then(result => expect(result).to.equal('100 is greater than 10'));
+            });
+            
+            // Testing the scenario where the provided value is less than 10
+            it('Should return the number being less than 10', () => {
+                testNum(1).then(result => expect(result).to.equal('1 is less than 10'));
+
+                testNum(2).then(result => expect(result).to.equal('2 is less than 10'));
+
+                testNum(5).then(result => expect(result).to.equal('5 is less than 10'));
+                
+                testNum(7.4).then(result => expect(result).to.equal('7.4 is less than 10'));
+
+                testNum(9).then(result => expect(result).to.equal('9 is less than 10'));
+            });
+
+            it("Should return 'Not a number'", () => {
+                testNum('hello world').catch(result => expect(result).to.equal('Not a number'));
+                testNum(true).catch(result => expect(result).to.equal('Not a number'));
             });
         });
     });

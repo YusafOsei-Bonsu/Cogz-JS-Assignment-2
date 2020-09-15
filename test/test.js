@@ -43,7 +43,6 @@ describe('JS Assignment 2', () => {
 
             it("Should return [ '£1000' ]", () => assert.deepEqual(findMonetary("I have £1000 in the bank"), ['£1000']));
             
-            
             it("Should return ['€5', '€8.50']", () => assert.deepEqual(findMonetary("The food cost €5 whilst the tickets cost €8.50"), ['€5', '€8.50']));
             
             it("Should return [ '¥1', '£5.00', '$10', '€11.60' ]", () => assert.deepEqual(findMonetary("I've travelled the world. In my wallet, I have ¥1, £5.00, $10 and €11.60"), ['¥1', '£5.00', '$10', '€11.60']));

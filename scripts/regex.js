@@ -28,6 +28,14 @@ export const findMonetary = (str) => {
     return money;
 }
 
+// Retrieves a valid telephone number from a string
+export const findPhoneNumber = (str) => {
+    const onlyNumbers = /^[0-9]+$/; // regex for only numbers
+    let telephoneNumber = str.split(/[ ,.]+/).filter(item => onlyNumbers.test(item));
+    telephoneNumber = telephoneNumber.length > 1 ? telephoneNumber.join(' ') : telephoneNumber.join();
+    return telephoneNumber;
+}
+
 // Finds the email in the string (Regex 5)
 export const findEmail = (str) => {
     // Regex to find the email

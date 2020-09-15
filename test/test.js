@@ -1,11 +1,10 @@
 import chai from 'chai';
 const { assert, expect } = chai;
 // JS functions using regex and promises
-import { find3LetterWords, removeNumbers, findEmail, findMonetary } from "../scripts/regex.js";
+import { find3LetterWords, removeNumbers, findEmail, findMonetary, findPhoneNumber } from "../scripts/regex.js";
 import { testNum, makeAllCaps, sortWords, evenPrimesSettled, evenPrimesAll } from '../scripts/promises.js'
 
 // Sample test data
-const ex3 = 'The salad costs $9.99';
 const ex4 = 'Contact customer support on 0800 300 500';
 
 // Tests for JS assignment 2
@@ -48,6 +47,15 @@ describe('JS Assignment 2', () => {
             it("Should return [ '¥1', '£5.00', '$10', '€11.60' ]", () => assert.deepEqual(findMonetary("I've travelled the world. In my wallet, I have ¥1, £5.00, $10 and €11.60"), ['¥1', '£5.00', '$10', '€11.60']));
             
             it("Should return [ '£50' ]", () => assert.deepEqual(findMonetary("I have £50."), ['£50']));
+        });
+
+        // Test suite for the telephone number-finding function
+        describe('Regex 4 - Find telephone number in string', () => {
+            it("Should return '0800 300 500'", () => expect(findPhoneNumber('Contact customer support on 0800 300 500')).to.equal('0800 300 500'));
+
+            it("Should return '07896897259'", () => expect(findPhoneNumber('My mobile number is 07896897259')).to.equal('07896897259'));
+
+            it("Should return '02086697050'", () => expect(findPhoneNumber('My home number is 02086697050')).to.equal('02086697050'));
         });
 
         // Test suite for the email-finding function

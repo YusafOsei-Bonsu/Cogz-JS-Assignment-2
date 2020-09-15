@@ -77,6 +77,7 @@ export const evenPrimesSettled = async (num) => {
     return result;
 }
 
+// Function that wants to determine if the provided number is an even prime number (via Promise.all())
 export const evenPrimesAll = async (num) => {
     let result = await Promise.all([isEven(num), isPrime(num)]);
     return result;

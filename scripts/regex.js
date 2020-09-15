@@ -28,7 +28,7 @@ export const findMonetary = (str) => {
     return money;
 }
 
-// Retrieves a valid telephone number from a string
+// Retrieves a valid telephone number from a string (Regex 4)
 export const findPhoneNumber = (str) => {
     const onlyNumbers = /^[0-9]+$/; // regex for only numbers
     let telephoneNumber = str.split(/[ ,.]+/).filter(item => onlyNumbers.test(item));

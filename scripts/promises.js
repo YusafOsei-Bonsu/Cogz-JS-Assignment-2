@@ -9,8 +9,10 @@ export const testNum = num => {
         } 
         else if (num === 10) {
             resolve(10);
-        } else {
-            reject("This isn't a number")
+        } 
+        // Checks if the provided input is numerical
+        else if (!(Number.isInteger(num))) {
+            reject("Not a number");
         }
     });
 }

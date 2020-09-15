@@ -25,7 +25,7 @@ const ex5 = 'You can contact me on Twitter @codebubb or james@juniordevelopercen
 ### REGEX
 1. Using a regex pattern, get the 3 letter words in the ex1 string. &#9745;
 2. Using a regex pattern, remove all of the numbers from the ex2 string. &#9745;
-3. Using a regex pattern, find the monetary value contained within the ex3 string.
+3. Using a regex pattern, find the monetary value contained within the ex3 string. &#9745;
 4. Using a regex pattern, find the telephone number contained within the ex4 string.
 5. Using a regex pattern, find the email address contained within the ex5 string. &#9745;
 

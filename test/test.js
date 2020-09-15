@@ -1,9 +1,8 @@
 import chai from 'chai';
 const { expect } = chai;
-// JS functions using regex
+// JS functions using regex and promises
 import { find3LetterWords, removeNumbers, findEmail } from "../scripts/regex.js";
-// JS functions using promises
-import { testNum } from '../scripts/promises.js'
+import { testNum, makeAllCaps, sortWords } from '../scripts/promises.js'
 
 // Sample test data
 const ex3 = 'The salad costs $9.99';
@@ -49,6 +48,7 @@ describe('JS Assignment 2', () => {
 
     // Test suite for the Promise exercises
     describe('Promise Exercises', () => {
+        // Test suite for first Promise exercise
         describe('Promise 1 - If number is greater/less than 10', () => {
 
             // Testing the scenario where the provided value is 10
@@ -78,9 +78,26 @@ describe('JS Assignment 2', () => {
                 testNum(9).then(result => expect(result).to.equal('9 is less than 10'));
             });
 
+            // Testing the scenario where the provided input isn't numerical
             it("Should return 'Not a number'", () => {
                 testNum('hello world').catch(result => expect(result).to.equal('Not a number'));
                 testNum(true).catch(result => expect(result).to.equal('Not a number'));
+            });
+        });
+
+        // Test suite for second Promise exercise
+        describe('Promise 2 - Capitalising an array of words and alphabetically sorting them', () => {
+
+            it('Should return [A, B, C, D]', () => {
+                
+            });
+
+            // Errors
+            it("Should return 'this is not an array'", () => {
+                makeAllCaps('true').catch((err) => expect(err).to.equal('This is not an array'));
+                makeAllCaps(false).catch((err) => expect(err).to.equal('This is not an array'));
+                makeAllCaps(1).catch((err) => expect(err).to.equal('This is not an array'));
+                makeAllCaps(5.5).catch((err) => expect(err).to.equal('This is not an array'));
             });
         });
     });

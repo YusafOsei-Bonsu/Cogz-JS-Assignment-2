@@ -14,7 +14,7 @@ describe('JS Assignment 2', () => {
 
     // Test suite for the Regex exercises
     describe('Regex Exercises', () => {
-        // Test suite for first regex question
+        
         describe('Regex 1 - Find 3 letter words', () => {
   
             it("Should return [ 'The', 'fox', 'the', 'dog' ]", () => expect(find3LetterWords('The quick brown fox jumped over the lazy dog')).to.eql(['The', 'fox', 'the', 'dog']));
@@ -26,7 +26,6 @@ describe('JS Assignment 2', () => {
             it("Should return [ 'one', 'old', 'and', 'poo' ]", () => expect(find3LetterWords('Hello, I am a one years old and I poo alot 123 .')).to.eql(['one', 'old', 'and', 'poo']));
         });
 
-        // Test suite for second regex question
         describe('Regex 2 - Remove all numbers from string', () => {
             it("Should return 'ABCDEFGHIJ'", () => expect(removeNumbers('A1B2C3D4E5F6G7H8I9J10')).to.equal('ABCDEFGHIJ'));
             
@@ -37,7 +36,6 @@ describe('JS Assignment 2', () => {
             it("Should return 'FIREFOX'", () => expect(removeNumbers('F1122222IRE1281FOX')).to.equal('FIREFOX'));
         });
 
-        // Test suite for fifth regex question
         describe('Regex 5 - Find email in string', () => {
             it("Should return [ 'james@juniordevelopercentral.com' ]", () => {
                 expect(findEmail('You can contact me on Twitter @codebubb or james@juniordevelopercentral.com')).to.eql(['james@juniordevelopercentral.com']);

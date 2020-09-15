@@ -2,7 +2,7 @@ import chai from 'chai';
 const { assert, expect } = chai;
 // JS functions using regex and promises
 import { find3LetterWords, removeNumbers, findEmail } from "../scripts/regex.js";
-import { testNum, makeAllCaps, sortWords } from '../scripts/promises.js'
+import { testNum, makeAllCaps, sortWords, evenPrimesSettled, evenPrimesAll } from '../scripts/promises.js'
 
 // Sample test data
 const ex3 = 'The salad costs $9.99';
@@ -116,6 +116,39 @@ describe('JS Assignment 2', () => {
                     }).catch(err => {
                         assert.equal(err, 'Array contains at least one non-alphabetical string');
                     });
+            });
+        });
+
+        // Test suite for third Promise exercise
+        describe('Promise 3 - Use all & allSettled methods in Promises', () => {
+            // allSettled() - Returns an array containing resolved/rejected values from each promise. allSettled() should be used when each Promise does not depend on each other
+            // all(): Returns an array containing all resolved values (from each promise) or one rejected value. All promises need to resolve and all() should be used when each Promise depends on each other
+
+            let result;
+            it("Should return [{ status: 'fulfilled', reason: '2 is an even number' }, { status: 'fulfilled', value: '2 is prime' }] via Promise.allSettled()", async () => {
+                result = await evenPrimesSettled(2);
+                expect(result).to.eql([
+                    { status: 'fulfilled', value: '2 is an even number' },
+                    { status: 'fulfilled', value: '2 is prime' }
+                ]);
+            });
+
+            it("Should return [{ status: 'rejected', reason: '5 is an odd number' }, { status: 'fulfilled', value: '5 is prime' }] via Promise.allSettled()", async () => {
+                result = await evenPrimesSettled(5);
+                expect(result).to.eql([
+                    { status: 'rejected', reason: '5 is an odd number' },
+                    { status: 'fulfilled', value: '5 is prime' }
+                ]);
+            });
+
+            it("Should return [ '2 is an even number', '2 is prime' ] via Promise.all()", async () => {
+                result = await evenPrimesAll(2);
+                expect(result).to.eql(['2 is an even number', '2 is prime']);
+            });
+
+            it("Should return [ '5 is an odd number' ] via Promise.all()", () => {
+                result = await evenPrimesAll(5);
+                assert.instanceOf(result, Error);
             });
         });
     });

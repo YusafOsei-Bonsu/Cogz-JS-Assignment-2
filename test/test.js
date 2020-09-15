@@ -14,6 +14,7 @@ describe('JS Assignment 2', () => {
     // Test suite for the Regex exercises
     describe('Regex Exercises', () => {
         
+        // Test suite for the 3-letter-word finding function
         describe('Regex 1 - Find 3 letter words', () => {
   
             it("Should return [ 'The', 'fox', 'the', 'dog' ]", () => expect(find3LetterWords('The quick brown fox jumped over the lazy dog')).to.eql(['The', 'fox', 'the', 'dog']));
@@ -25,6 +26,7 @@ describe('JS Assignment 2', () => {
             it("Should return [ 'one', 'old', 'and', 'poo' ]", () => expect(find3LetterWords('Hello, I am a one years old and I poo alot 123 .')).to.eql(['one', 'old', 'and', 'poo']));
         });
 
+        // Test suite for the number-removal function
         describe('Regex 2 - Remove all numbers from string', () => {
             it("Should return 'ABCDEFGHIJ'", () => expect(removeNumbers('A1B2C3D4E5F6G7H8I9J10')).to.equal('ABCDEFGHIJ'));
             
@@ -35,6 +37,7 @@ describe('JS Assignment 2', () => {
             it("Should return 'FIREFOX'", () => expect(removeNumbers('F1122222IRE1281FOX')).to.equal('FIREFOX'));
         });
 
+        // Test suite for the email-finding function
         describe('Regex 5 - Find email in string', () => {
             it("Should return [ 'james@juniordevelopercentral.com' ]", () => {
                 expect(findEmail('You can contact me on Twitter @codebubb or james@juniordevelopercentral.com')).to.eql(['james@juniordevelopercentral.com']);
@@ -95,7 +98,6 @@ describe('JS Assignment 2', () => {
         // Test suite for second Promise exercise
         describe('Promise 2 - Capitalising an array of words and alphabetically sorting them', () => {
 
-            // Returns a sorted, capitalised version of the original array
             it('Should return [A, B, C, D]', () => {
                 return makeAllCaps(['b','d','c','a'])
                     .then(capitalisedArr => {
@@ -146,9 +148,13 @@ describe('JS Assignment 2', () => {
                 expect(result).to.eql(['2 is an even number', '2 is prime']);
             });
 
-            it("Should return [ '5 is an odd number' ] via Promise.all()", () => {
-                result = await evenPrimesAll(5);
-                assert.instanceOf(result, Error);
+            it("Should return [ '5 is an odd number' ] via Promise.all()", async () => {
+                return evenPrimesAll(5)
+                .then(outcome => {
+                    return outcome;
+                }).catch(reason => {
+                    assert.deepEqual(reason, '5 is an odd number');
+                });
             });
         });
     });

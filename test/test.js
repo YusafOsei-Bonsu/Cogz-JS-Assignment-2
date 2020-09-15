@@ -1,5 +1,5 @@
 import chai from 'chai';
-const { expect } = chai;
+const { assert, expect } = chai;
 // JS functions using regex and promises
 import { find3LetterWords, removeNumbers, findEmail } from "../scripts/regex.js";
 import { testNum, makeAllCaps, sortWords } from '../scripts/promises.js'
@@ -51,53 +51,71 @@ describe('JS Assignment 2', () => {
         // Test suite for first Promise exercise
         describe('Promise 1 - If number is greater/less than 10', () => {
 
+            let result;
             // Testing the scenario where the provided value is 10
-            it('Should return 10', () => testNum(10).then(result => expect(result).to.equal(10)));
+            it('Should return 10', async () => {
+                result = await testNum(10);
+                assert.equal(result, 10);
+            });
 
             // Testing the scenario where the provided value is greater than 10
-            it('Should return the number being greater than 10', () => {
-                testNum(20).then(result => expect(result).to.equal('20 is greater than 10'));
+            it('Should return the number being greater than 10', async () => {
+                result = await testNum(20);
+                assert.equal(result, '20 is greater than 10');
 
-                testNum(30).then(result => expect(result).to.equal('30 is greater than 10'));
+                result = await testNum(30);
+                assert.equal(result, '30 is greater than 10');
 
-                testNum(50).then(result => expect(result).to.equal('50 is greater than 10'));
+                result = await testNum(50);
+                assert.equal(result, '50 is greater than 10');
 
-                testNum(100).then(result => expect(result).to.equal('100 is greater than 10'));
+                result = await testNum(100);
+                assert.equal(result, '100 is greater than 10');
             });
             
             // Testing the scenario where the provided value is less than 10
-            it('Should return the number being less than 10', () => {
-                testNum(1).then(result => expect(result).to.equal('1 is less than 10'));
-
-                testNum(2).then(result => expect(result).to.equal('2 is less than 10'));
-
-                testNum(5).then(result => expect(result).to.equal('5 is less than 10'));
+            it('Should return the number being less than 10', async () => {
+                result = await testNum(1);
+                assert.equal(result, '1 is less than 10');
                 
-                testNum(7.4).then(result => expect(result).to.equal('7.4 is less than 10'));
-
-                testNum(9).then(result => expect(result).to.equal('9 is less than 10'));
-            });
-
-            // Testing the scenario where the provided input isn't numerical
-            it("Should return 'Not a number'", () => {
-                testNum('hello world').catch(result => expect(result).to.equal('Not a number'));
-                testNum(true).catch(result => expect(result).to.equal('Not a number'));
+                result = await testNum(2);
+                assert.equal(result, '2 is less than 10');
+                
+                result = await testNum(5);
+                assert.equal(result, '5 is less than 10');
+                
+                result = await testNum(7.4);
+                assert.equal(result, '7.4 is less than 10');
+                
+                result = await testNum(9);
+                assert.equal(result, '9 is less than 10');
             });
         });
 
         // Test suite for second Promise exercise
         describe('Promise 2 - Capitalising an array of words and alphabetically sorting them', () => {
 
+            // Returns a sorted, capitalised version of the original array
             it('Should return [A, B, C, D]', () => {
-                
+                return makeAllCaps(['b','d','c','a'])
+                    .then(capitalisedArr => {
+                        return sortWords(capitalisedArr);
+                    }).then(sortedArr => {
+                        assert.strictEqual(sortedArr, ['A','B','C','D']);
+                    }).catch(err => {
+                        return err;
+                    });
             });
 
-            // Errors
-            it("Should return 'this is not an array'", () => {
-                makeAllCaps('true').catch((err) => expect(err).to.equal('This is not an array'));
-                makeAllCaps(false).catch((err) => expect(err).to.equal('This is not an array'));
-                makeAllCaps(1).catch((err) => expect(err).to.equal('This is not an array'));
-                makeAllCaps(5.5).catch((err) => expect(err).to.equal('This is not an array'));
+            it("Should return 'Array contains at least one non-alphabetical string'", () => {
+                return makeAllCaps(['hello','world', 1])
+                    .then(capitalisedArr => {
+                        return sortWords(capitalisedArr);
+                    }).then(sortedArr => {
+                        return sortedArr
+                    }).catch(err => {
+                        assert.equal(err, 'Array contains at least one non-alphabetical string');
+                    });
             });
         });
     });

@@ -4,9 +4,6 @@ const { assert, expect } = chai;
 import { find3LetterWords, removeNumbers, findEmail, findMonetary, findPhoneNumber } from "../scripts/regex.js";
 import { testNum, makeAllCaps, sortWords, evenPrimesSettled, evenPrimesAll } from '../scripts/promises.js'
 
-// Sample test data
-const ex4 = 'Contact customer support on 0800 300 500';
-
 // Tests for JS assignment 2
 describe('JS Assignment 2', () => {
 

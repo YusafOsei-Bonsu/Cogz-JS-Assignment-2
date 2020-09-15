@@ -1,7 +1,7 @@
 import chai from 'chai';
 const { assert, expect } = chai;
 // JS functions using regex and promises
-import { find3LetterWords, removeNumbers, findEmail } from "../scripts/regex.js";
+import { find3LetterWords, removeNumbers, findEmail, findMonetary } from "../scripts/regex.js";
 import { testNum, makeAllCaps, sortWords, evenPrimesSettled, evenPrimesAll } from '../scripts/promises.js'
 
 // Sample test data
@@ -35,6 +35,20 @@ describe('JS Assignment 2', () => {
             it("Should return 'HELLO'", () => expect(removeNumbers('1H23E45L67L89O')).to.equal('HELLO'));
             
             it("Should return 'FIREFOX'", () => expect(removeNumbers('F1122222IRE1281FOX')).to.equal('FIREFOX'));
+        });
+
+        // Test suite for the monetary-finding function
+        describe('Regex 3 - Find monetary values', () => {
+            it("Should return [ '$9.99' ]", () => assert.deepEqual(findMonetary("The salad costs $9.99"), ['$9.99']));
+
+            it("Should return [ '£1000' ]", () => assert.deepEqual(findMonetary("I have £1000 in the bank"), ['£1000']));
+            
+            
+            it("Should return ['€5', '€8.50']", () => assert.deepEqual(findMonetary("The food cost €5 whilst the tickets cost €8.50"), ['€5', '€8.50']));
+            
+            it("Should return [ '¥1', '£5.00', '$10', '€11.60' ]", () => assert.deepEqual(findMonetary("I've travelled the world. In my wallet, I have ¥1, £5.00, $10 and €11.60"), ['¥1', '£5.00', '$10', '€11.60']));
+            
+            it("Should return [ '£50' ]", () => assert.deepEqual(findMonetary("I have £50."), ['£50']));
         });
 
         // Test suite for the email-finding function

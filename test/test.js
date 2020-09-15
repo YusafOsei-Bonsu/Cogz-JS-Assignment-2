@@ -65,7 +65,11 @@ describe('JS Assignment 2', () => {
             });
 
             it("Should return [ 'yusafoseibonsu@hotmail.com', '875394@cognizant.com' ]", () => {
-                expect(findEmail('My peronal email is yusafoseibonsu@hotmail.com and my professional email is 875394@cognizant.com')).to.eql(['yusafoseibonsu@hotmail.com','875394@cognizant.com']);
+                expect(findEmail('My personal email is yusafoseibonsu@hotmail.com and my professional email is 875394@cognizant.com')).to.eql(['yusafoseibonsu@hotmail.com','875394@cognizant.com']);
+            });
+
+            it("Should return [ '1407312@brunel.ac.uk' ]", () => {
+                expect(findEmail('My Brunel email is 1407312@brunel.ac.uk')).to.eql(['1407312@brunel.ac.uk']);
             });
         });
     });
@@ -138,6 +142,17 @@ describe('JS Assignment 2', () => {
                         return sortedArr
                     }).catch(err => {
                         assert.equal(err, 'Array contains at least one non-alphabetical string');
+                    });
+            });
+
+            it("Should return [ 'JAKE', 'STANLEY', 'YUSAF', 'ZAK' ]", () => {
+                return makeAllCaps(['yusaf','zak','stanley','jake'])
+                    .then(capitalisedArr => {
+                        return sortWords(capitalisedArr);
+                    }).then(sortedArr => {
+                        assert.strictEqual(sortedArr, ['JAKE','STANLEY','YUSAF','ZAK']);
+                    }).catch(err => {
+                        return err;
                     });
             });
         });

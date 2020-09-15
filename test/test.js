@@ -48,11 +48,11 @@ describe('JS Assignment 2', () => {
 
         // Test suite for the telephone number-finding function
         describe('Regex 4 - Find telephone number in string', () => {
-            it("Should return '0800 300 500'", () => expect(findPhoneNumber('Contact customer support on 0800 300 500')).to.equal('0800 300 500'));
+            it("Should return '0800300500'", () => expect(findPhoneNumber('Contact customer support on 0800 300 500')).to.equal('0800300500'));
 
             it("Should return '07896897259'", () => expect(findPhoneNumber('My mobile number is 07896897259')).to.equal('07896897259'));
 
-            it("Should return '02086697050'", () => expect(findPhoneNumber('My home number is 02086697050')).to.equal('02086697050'));
+            it("Should return '02086697050'", () => expect(findPhoneNumber('My home number is 0208 669 7050')).to.equal('02086697050'));
         });
 
         // Test suite for the email-finding function

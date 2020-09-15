@@ -32,7 +32,8 @@ export const findMonetary = (str) => {
 export const findPhoneNumber = (str) => {
     const onlyNumbers = /^[0-9]+$/; // regex for only numbers
     let telephoneNumber = str.split(/[ ,.]+/).filter(item => onlyNumbers.test(item));
-    telephoneNumber = telephoneNumber.length > 1 ? telephoneNumber.join(' ') : telephoneNumber.join();
+    telephoneNumber = telephoneNumber.join('');
+
     return telephoneNumber;
 }
 
